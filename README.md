@@ -1,6 +1,5 @@
 # blog-project
-<ul>Project based on back-end of a Blogging App.</ul> \
-<br>
+Project based on back-end of a Blogging App. \
 Team Members:\
 Subrat Kumar Nayak\
 Sumit Kumar Gupta\
