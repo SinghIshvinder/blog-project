@@ -2,7 +2,7 @@ const { query } = require("express");
 const authorModel = require("../models/authorModel");
 const blogModel = require("../models/blogModel");
 
-
+//creating blog
 const createBlog = async (req, res) => {
   try {
     if (Object.keys(req.body).length != 0) {
@@ -22,6 +22,7 @@ const createBlog = async (req, res) => {
   }
 };
 
+//fetching data
 const getBlogs = async (req, res) => {
   try {
     
@@ -33,6 +34,7 @@ const getBlogs = async (req, res) => {
   }
 };
 
+//updation
 const updateBlog = async (req, res) => {
   try {
       
@@ -41,7 +43,7 @@ const updateBlog = async (req, res) => {
     if(Object.keys(data).length == 0){
         return res.status(400).send({status:false, msg:"Invalid Request"})
     }
-    const deleteTrue = await blogModel.findById(blogId);
+    const deleteTrue = await blogModel.findById(blogId); 
     if (deleteTrue.isDeleted) {
       return res.status(404).json({ status: false, msg: "ID not found!" });
     }
@@ -60,6 +62,7 @@ const updateBlog = async (req, res) => {
   }
 };
 
+//deletion
 const deleteById = async (req, res) => {
   try {
     const blogId = req.params.blogId;
@@ -78,6 +81,7 @@ const deleteById = async (req, res) => {
   }
 };
 
+//deletion (query)
 const deleteByQuery = async (req, res) => {
     try {
         let blogs = await blogModel.find(req.query);
