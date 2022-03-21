@@ -206,7 +206,7 @@ const updateDetails = async function (req, res) {
 
     let Blog = await blogModel.findOne({ _id: blogId });
     if (!Blog) {
-      return res.status(400).send({ status: false, msg: "No such blog found" });
+      return res.status(400).send({ status: false, msg: "No Blog exists with given ID!" });
     }
     if (Blog.authorId.toString() !== authorIdFromToken) {
       res.status(401).send({

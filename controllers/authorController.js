@@ -33,7 +33,7 @@ const createAuthor = async function (req, res) {
     if (!validator.isValidTitle(title)) {
       return res.status(400).send({
         status: false,
-        message: `Title should be among Mr, Mrs, Miss and Mast`,
+        message: `Title should Mr, Mrs or Miss`,
       });
     }
     if (!validator.isValid(email)) {
@@ -71,6 +71,7 @@ const createAuthor = async function (req, res) {
     });
   } catch (error) {
     res.status(500).send({ status: false, Error: error.message });
+    console.log(error);
   }
 };
 
@@ -84,7 +85,7 @@ const loginAuthor = async function (req, res) {
       });
     }
 
-    const { email, password } = requestBody;
+    let { email, password } = requestBody;
 
     if (!validator.isValid(email)) {
       return res
@@ -111,7 +112,7 @@ const loginAuthor = async function (req, res) {
     if (!findAuthor) {
       return res.status(401).send({
         status: false,
-        message: `Invalid login credentials. Please check the details & try again.`,
+        message: `Incorrect email or password. Try Again.`,
       });
     }
 
@@ -126,7 +127,7 @@ const loginAuthor = async function (req, res) {
     res.header("x-api-key", token);
     res.status(200).send({
       status: true,
-      message: `Author login successfully`,
+      message: `Author login successful.`,
       data: { token },
     });
   } catch (error) {

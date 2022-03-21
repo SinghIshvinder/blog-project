@@ -11,7 +11,7 @@ const isValidTitle = function (title) {
 };
 
 const isValidRequestBody = function (requestBody) {
-  return Object.keys(requestBody).length > 0;
+  return Object.keys({requestBody}).length > 0;
 };
 
 const isValidObjectId = function (objectId) {
